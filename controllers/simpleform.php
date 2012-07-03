@@ -145,19 +145,6 @@ class Simpleform extends Base_Controller {
         self::check_additional_errors();
     }
 
-    /**
-     * Prepare data before saving
-     *
-     */
-    function _prepare_data($xhr = FALSE) {
-        // Standard fields
-        $fields = $this->db->list_fields($this->table);
-
-        // Set the data to the posted value.
-        foreach ($fields as $field)
-            $this->data[$field] = $this->input->post($field);
-    }
-
     function prepare_mail_data($form_name) {
         foreach (config_item('simpleform_' . $form_name) as $key => $value)
             if ($value != 'antispam')
